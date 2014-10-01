@@ -12,6 +12,3 @@ def is_fizz(n):
         print "N is not devisible neither by 3 nor by 5"
         
 is_fizz(n)
-
-print n % 3
-print n % 5
