@@ -1,0 +1,111 @@
+#convention: one style case.
+# camel case: word_word()
+first, second = second, first + second
+while n < 10:
+    a = 2
+    n += 1
+    print n
+    print a
+
+
+>>> iterator = 0
+>>> def do_something(x):
+...     print x
+...     global iterator
+...     iterator += 1
+... 
+>>> do_something(1)
+1
+>>> iterator
+1
+>>> 
+>>> globals()
+{'iterator': 1, '__builtins__': <module '__builtin__' (built-in)>, '__package__': None, 'do_something': <function do_something at 0x103e56b18>, '__name__': '__main__', '__doc__': None}
+>>> locals()
+{'iterator': 1, '__builtins__': <module '__builtin__' (built-in)>, '__package__': None, 'do_something': <function do_something at 0x103e56b18>, '__name__': '__main__', '__doc__': None}
+>>> globals
+<built-in function globals>
+>>> def do_1():
+...     some_variable = 'x'
+...     print 'im in do_1'
+... 
+>>> 'some_variable' in globals()
+False
+>>> 'do_1' in globals()
+True
+>>> 'str' in globals()
+False
+>>> def do_2():
+...     print locals()
+...     some_variable = 'x'
+...     print locals()
+... 
+>>> do_2()
+{}
+{'some_variable': 'x'}
+>>> do_something()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: do_something() takes exactly 1 argument (0 given)
+>>> 'do_something' in globals()
+True
+>>> 'do_something' in locals()
+True
+>>> locals
+<built-in function locals>
+>>> locals()
+{'iterator': 1, '__builtins__': <module '__builtin__' (built-in)>, '__package__': None, 'do_something': <function do_something at 0x103e56b18>, 'do_2': <function do_2 at 0x103e5e5f0>, 'do_1': <function do_1 at 0x103e56f50>, '__name__': '__main__', '__doc__': None}
+>>> globals()
+{'iterator': 1, '__builtins__': <module '__builtin__' (built-in)>, '__package__': None, 'do_something': <function do_something at 0x103e56b18>, 'do_2': <function do_2 at 0x103e5e5f0>, 'do_1': <function do_1 at 0x103e56f50>, '__name__': '__main__', '__doc__': None}
+>>> 
+#не пишіть коментарі рідною для вас мовою. це дуже погана практика. так роблять лише 1С програмісти.
+# python 2 does not support cyrillics by default. so avoid 
+
+# special comment in the start to enable utf-8
+
+# _*_ coding: utf-8 _*_
+
+>>> 'ілвоавіоа'
+'\xd1\x96\xd0\xbb\xd0\xb2\xd0\xbe\xd0\xb0\xd0\xb2\xd1\x96\xd0\xbe\xd0\xb0'
+>>> u'івлаівоаіо'
+u'\u0456\u0432\u043b\u0430\u0456\u0432\u043e\u0430\u0456\u043e'
+>>> u'asdasd'
+u'asdasd'
+>>> # _*_ coding: utf-8 _*_
+... 
+>>> u'asdasd'
+u'asdasd'
+>>> u'івлаівоаіо'
+u'\u0456\u0432\u043b\u0430\u0456\u0432\u043e\u0430\u0456\u043e'
+>>> # -*- coding: utf-8 -*-
+... 
+>>> u'івлаівоаіо'
+u'\u0456\u0432\u043b\u0430\u0456\u0432\u043e\u0430\u0456\u043e'
+>>> u'asdasd'
+u'asdasd'
+>>> ord('a')
+97
+>>> ord('в')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: ord() expected a character, but string of length 2 found
+>>> ord('1')
+49
+>>> ord('0')
+48
+>>> chr(93)
+']'
+>>> chr(0)
+'\x00'
+>>> chr(1)
+'\x01'
+>>> chr(93+3)
+'`'
+>>> help ord
+  File "<stdin>", line 1
+    help ord
+           ^
+SyntaxError: invalid syntax
+>>> help (ord)
+
+>>> pep 
